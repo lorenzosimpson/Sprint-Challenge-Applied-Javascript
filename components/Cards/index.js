@@ -22,63 +22,18 @@ const cardsContainer = document.querySelector('.cards-container')
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response => {
     console.log(response, 'card data')
-    console.log(response.data.articles.bootstrap)
-    response.data.articles.bootstrap.forEach(item => {
-        cardsContainer.appendChild(createCard(item))
+    let { articles }  = response.data;
+    Object.keys(articles).forEach(category_key => {
+      let category = articles[category_key];
+      // now `category` should be equal to the array like `response.data`;
+      category.forEach(article => {
+        cardsContainer.appendChild(createCard(article));
+        })
     })
-    
 })
 .catch(err => {
     console.log(err)
 })
-
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-.then(response => {
-    console.log(response.data.articles.javascript)
-    response.data.articles.javascript.forEach(item => {
-        cardsContainer.appendChild(createCard(item))
-    })
-    
-})
-.catch(err => {
-    console.log(err)
-})
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-.then(response => {
-    console.log(response.data.articles.jquery)
-    response.data.articles.jquery.forEach(item => {
-        cardsContainer.appendChild(createCard(item))
-    })
-    
-})
-.catch(err => {
-    console.log(err)
-})
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-.then(response => {
-    console.log(response.data.articles.node)
-    response.data.articles.node.forEach(item => {
-        cardsContainer.appendChild(createCard(item))
-    })
-    
-})
-.catch(err => {
-    console.log(err)
-})
-
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-.then(response => {
-    console.log(response, 'card data')
-    console.log(response.data.articles.technology)
-    response.data.articles.technology.forEach(item => {
-        cardsContainer.appendChild(createCard(item))
-    })
-    
-})
-.catch(err => {
-    console.log(err)
-})
-
 
 function createCard(obj) {
 
@@ -111,3 +66,51 @@ function createCard(obj) {
 
     return newCard;
 }
+
+
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//     console.log(response.data.articles.javascript)
+//     response.data.articles.javascript.forEach(item => {
+//         cardsContainer.appendChild(createCard(item))
+//     })
+    
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//     console.log(response.data.articles.jquery)
+//     response.data.articles.jquery.forEach(item => {
+//         cardsContainer.appendChild(createCard(item))
+//     })
+    
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//     console.log(response.data.articles.node)
+//     response.data.articles.node.forEach(item => {
+//         cardsContainer.appendChild(createCard(item))
+//     })
+    
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//     console.log(response, 'card data')
+//     console.log(response.data.articles.technology)
+//     response.data.articles.technology.forEach(item => {
+//         cardsContainer.appendChild(createCard(item))
+//     })
+    
+// })
+// .catch(err => {
+//     console.log(err)
+// })
