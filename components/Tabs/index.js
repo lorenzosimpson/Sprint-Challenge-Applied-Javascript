@@ -15,12 +15,12 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
         response.data.topics.forEach(item => {
         topics.appendChild(createTab(item))
         })
-    });
-// .then(response => {
-//     console.log(response)
-//     topics.appendChild(createTab(response.data))
+    })
+    .catch(err => {
+        console.log(err)
+    })
 
-// });
+
 
 function createTab(obj) {
     //create tab div element
