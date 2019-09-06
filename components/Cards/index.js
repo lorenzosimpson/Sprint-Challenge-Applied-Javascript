@@ -35,6 +35,20 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     console.log(err)
 })
 
+//can also be written as
+// const cardsContainer = document.querySelector('.cards-container')
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+// .then(response => {
+//     for (topic in response.data.articles) {
+//         response.data.articles[topic].forEach(article => {
+//             cardsContainer.appendChild(createCard(article));
+//         });
+//     }
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
 function createCard(obj) {
 
     //create dom elements
